@@ -17,6 +17,7 @@ public class Exam0710 {
 
 // 인스턴스 변수(instance variable)
 // - new 명령을 사용하여 인스턴스를 생성할 때 준비되는 변수
+// ??? int는 new를 사용안했는데? int는 왜 인스턴스인가
 //
 // 클래스 변수(class variable = static variable)
 // - 클래스가 로딩될 때 준비되는 변수

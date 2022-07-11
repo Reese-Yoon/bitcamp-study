@@ -16,6 +16,8 @@ public class Exam0320 {
     //- 숫자 맨 뒤에 f 또는 F를 붙인다.
     System.out.println(3.14f); // 주로 소문자 f를 많이 붙인다.
     System.out.println(3.14F);
+
+    System.out.println(0.0314e2f);
   }
 }
 

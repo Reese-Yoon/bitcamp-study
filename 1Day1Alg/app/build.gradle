@@ -26,7 +26,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.study.alg.Day1'
+    mainClass = 'com.study.alg.Ass02'
 }
 
 // 자바 소스를 컴파일 할 때 적용할 옵션
