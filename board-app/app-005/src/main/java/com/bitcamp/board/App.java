@@ -13,6 +13,10 @@ public class App {
     System.out.println();
 
     java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
+    
+    // 날짜 정보에서 값을 추출하여 특정 포맷의 문자열로 만들어줄 도구를 준비
+    java.text.SimpleDateFormat formatter = 
+      new java.text.SimpleDateFormat("yyyy-MM-dd");
 
     final int SIZE = 3;
 
@@ -44,10 +48,6 @@ public class App {
       } else if (menuNo == 1) {
         System.out.println("[게시글 목록]");
         System.out.println("번호 제목 조회수 작성자 등록일");
-
-        // 날짜 정보에서 값을 추출하여 특정 포맷의 문자열로 만들어줄 도구를 준비
-        java.text.SimpleDateFormat formatter = 
-          new java.text.SimpleDateFormat("yyyy-MM-dd");
         
         for (int i = 0; i < boardCount; i++) {
           // 밀리초 데이터 ==> Date 도구함으로 날짜 정보를 설정
@@ -68,17 +68,16 @@ public class App {
         int boardNo = Integer.parseInt(input);
 
         // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
-        int boardIndex = -100;
-
+        int boardIndex = -1;
         for (int i = 0; i < boardCount; i++) {
           if (no[i] == boardNo) {
-            boardIndex = i; 
+            boardIndex = i;
             break;
           }
         }
 
         // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
-        if (boardIndex == -100) {
+        if (boardIndex == -1) {
           System.out.println("해당 번호의 게시글이 없습니다!");
           continue;
         }

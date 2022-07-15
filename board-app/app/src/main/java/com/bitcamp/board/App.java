@@ -22,7 +22,7 @@ public class App {
     String[] title = new String[SIZE];      //게시글 제목
     String[] content = new String[SIZE];    //게시글 내용
     String[] password = new String[SIZE];   //게시글 비밀번호
-    String[] createdDate = new String[SIZE];//게시글 작성날짜
+    long[] createdDate = new long[SIZE];//게시글 작성날짜
     String[] writer = new String[SIZE];     //게시글 작성자
     int[] viewCount = new int[SIZE];        //게시글 조회수
 
@@ -47,13 +47,20 @@ public class App {
         break;
       } //0을 입력받았을때 종료함.
 
+
       switch (cho){
         case 1: 
+          //게시글등록하면서 기록해놓은 등록일(long)을 formatter클래스를 이용해 
+          //배열안에 등록일을 형식에 맞춰 dateStr(String)에 넣어둠.
+          java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd hh:mm");
+
           System.out.println("[ 1. 게시글 목록 ]");
           System.out.println("번호\t제목\t조회수\t작성자\t등록일\t");
           for(int i=0; i<SIZE; i++){
+            String dateStr=formatter.format(createdDate[index]);
+
             System.out.printf("%d\t%s\t%d\t%s\t%s \n", 
-                i+1, title[i], viewCount[i],writer[i],createdDate[i]);
+                i+1, title[i], viewCount[i],writer[i],dateStr);
           }
           break;
 
@@ -92,7 +99,11 @@ public class App {
           System.out.println("암호 : ");
           password[index] = Input.next();
 
-          System.out.printf(" \"num[%d] - %d번째 게시글로 저장되었습니다.\" \n", index+1, index+1);
+          createdDate[index] = System.currentTimeMillis(); //게시글 등록과 동시에 현재시간을 받음.(자료형 : long)
+          java.util.Date date = new java.util.Date(createdDate[index]); //long형태의 자료형을 date형식으로 만듬
+          System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date); //printf로 해서 출력
+
+          System.out.printf(" \"num[%d] - %d번째 게시글이 저장되었습니다.\" \n", index+1, index+1);
           System.out.println();
 
           System.out.println("-----개발자 메모--------------------");
